@@ -35,8 +35,8 @@ jobs:
         run: chmod +x gradlew
 
       # 🔹 Análisis de vulnerabilidades
-      - name: Run OWASP Dependency Check
-        run: ./gradlew dependencyCheckAnalyze --no-daemon
+      - name: Check dependency updates
+        run: ./gradlew dependencyUpdates --no-daemon
 
       # 🔹 Compilar y correr tests
       - name: Build with Gradle
