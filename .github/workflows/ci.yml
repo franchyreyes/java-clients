@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout repository
@@ -34,7 +36,7 @@ jobs:
       - name: Grant execute permission for Gradlew
         run: chmod +x gradlew
 
-      # 🔹 Análisis de vulnerabilidades
+      # 🔹 Chequeo de dependencias desactualizadas
       - name: Check dependency updates
         run: ./gradlew dependencyUpdates --no-daemon
 
