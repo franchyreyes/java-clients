@@ -30,7 +30,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      # 🔹 Paso de análisis de vulnerabilidades
+      # 🔹 Fix de permisos
+      - name: Grant execute permission for Gradlew
+        run: chmod +x gradlew
+
+      # 🔹 Análisis de vulnerabilidades
       - name: Run OWASP Dependency Check
         run: ./gradlew dependencyCheckAnalyze --no-daemon
 
