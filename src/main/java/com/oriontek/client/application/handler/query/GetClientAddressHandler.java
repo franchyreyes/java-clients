@@ -28,6 +28,7 @@ public class GetClientAddressHandler implements Handler<Long, List<ClientAddress
 
         return addresses.stream()
                 .map(address -> new ClientAddressDTO(
+                        address.getId(),
                         address.getDescription()
                 ))
                 .toList();

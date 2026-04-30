@@ -19,6 +19,6 @@ public class CreateClientAddressHandle implements Handler<CreateClientAddressReq
     @Override
     public ClientAddressDTO handle(CreateClientAddressRequest command) {
         Address saved = createClientAddressUseCase.execute(command.getClientId(), command.getDescription());
-        return new ClientAddressDTO(saved.getDescription());
+        return new ClientAddressDTO(saved.getId(), saved.getDescription());
     }
 }
