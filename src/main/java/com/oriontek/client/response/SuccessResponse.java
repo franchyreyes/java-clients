@@ -8,6 +8,7 @@ public class SuccessResponse<T> {
     private String message;
     private T data;
 
+    public SuccessResponse(){}
     public SuccessResponse(LocalDateTime timestamp, int status, String message, T data) {
         this.timestamp = timestamp;
         this.status = status;
@@ -19,5 +20,21 @@ public class SuccessResponse<T> {
     public int getStatus() { return status; }
     public String getMessage() { return message; }
     public T getData() { return data; }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
 }
 

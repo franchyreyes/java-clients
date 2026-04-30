@@ -11,6 +11,7 @@ public class ClientDTO {
     private String name;
     private List<String> addresses;
 
+    public ClientDTO(){}
     // Constructor que transforma la entidad Client en un DTO
     public ClientDTO(Client client) {
         this.id = client.getId();
@@ -26,5 +27,17 @@ public class ClientDTO {
     public Long getId() { return id; }
     public String getName() { return name; }
     public List<String> getAddresses() { return addresses; }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAddresses(List<String> addresses) {
+        this.addresses = addresses;
+    }
 }
 

@@ -5,6 +5,7 @@ public class ClientAddressDTO {
     private Long  id;
     private String description;
 
+    public ClientAddressDTO(){}
     public ClientAddressDTO(Long id, String description) {
         this.id = id;
         this.description = description;
