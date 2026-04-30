@@ -1,8 +1,10 @@
 package com.oriontek.client.controller;
 
 import com.oriontek.client.application.handler.command.CreateClientAddressHandle;
+import com.oriontek.client.application.handler.command.DeleteClientAddressHandler;
 import com.oriontek.client.application.handler.query.GetClientAddressHandler;
 import com.oriontek.client.application.usecase.command.request.CreateClientAddressRequest;
+import com.oriontek.client.application.usecase.command.request.DeleteClientAddressRequest;
 import com.oriontek.client.dto.ClientAddressDTO;
 import com.oriontek.client.response.SuccessResponse;
 import org.springframework.http.HttpStatus;
@@ -18,10 +20,12 @@ public class ClientAddressController {
 
     private final GetClientAddressHandler getClientAddressHandler;
     private final CreateClientAddressHandle createClientAddressHandle;
+    private final DeleteClientAddressHandler deleteClientAddressHandler;
 
-    public ClientAddressController(GetClientAddressHandler getClientAddressHandler, CreateClientAddressHandle createClientAddressHandle) {
+    public ClientAddressController(GetClientAddressHandler getClientAddressHandler, CreateClientAddressHandle createClientAddressHandle, DeleteClientAddressHandler deleteClientAddressHandler) {
         this.getClientAddressHandler = getClientAddressHandler;
         this.createClientAddressHandle = createClientAddressHandle;
+        this.deleteClientAddressHandler = deleteClientAddressHandler;
     }
 
     // Command side: create or update client address
@@ -48,6 +52,19 @@ public class ClientAddressController {
                 HttpStatus.OK.value(),
                 "Client address retrieved successfully",
                 addresses
+        );
+        return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping("/{idClient}/address/{idAddress}")
+    public ResponseEntity<SuccessResponse<Void>> deleteAddressById(@PathVariable Long idClient, @PathVariable Long idAddress) {
+        DeleteClientAddressRequest request = new DeleteClientAddressRequest(idClient, idAddress);
+        deleteClientAddressHandler.handle(request);
+        SuccessResponse<Void> response = new SuccessResponse<>(
+                LocalDateTime.now(),
+                HttpStatus.OK.value(),
+                "Address deleted successfully",
+                null
         );
         return ResponseEntity.ok(response);
     }
