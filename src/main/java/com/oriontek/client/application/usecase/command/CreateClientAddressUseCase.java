@@ -1,17 +1,11 @@
 package com.oriontek.client.application.usecase.command;
 
-import com.oriontek.client.application.handler.Handler;
-import com.oriontek.client.application.usecase.command.request.CreateClientAddressRequest;
-import com.oriontek.client.dto.ClientAddressDTO;
-import com.oriontek.client.exception.ClientNotFoundException;
-import com.oriontek.client.model.Address;
-import com.oriontek.client.model.Client;
-import com.oriontek.client.repository.ClientAddressRepository;
-import com.oriontek.client.repository.ClientRepository;
+import com.oriontek.client.shared.exception.ClientNotFoundException;
+import com.oriontek.client.domain.model.Address;
+import com.oriontek.client.domain.model.Client;
+import com.oriontek.client.infraestructure.repository.ClientAddressRepository;
+import com.oriontek.client.infraestructure.repository.ClientRepository;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class CreateClientAddressUseCase {

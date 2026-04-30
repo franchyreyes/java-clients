@@ -1,4 +1,4 @@
-package com.oriontek.client.model;
+package com.oriontek.client.domain.model;
 
 import jakarta.persistence.*;
 

@@ -3,8 +3,8 @@ package com.oriontek.client.application.handler.command;
 import com.oriontek.client.application.handler.Handler;
 import com.oriontek.client.application.usecase.command.CreateClientAddressUseCase;
 import com.oriontek.client.application.usecase.command.request.CreateClientAddressRequest;
-import com.oriontek.client.dto.ClientAddressDTO;
-import com.oriontek.client.model.Address;
+import com.oriontek.client.application.dto.ClientAddressDTO;
+import com.oriontek.client.domain.model.Address;
 import org.springframework.stereotype.Component;
 
 @Component

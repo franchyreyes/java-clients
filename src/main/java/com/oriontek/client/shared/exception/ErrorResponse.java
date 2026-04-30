@@ -1,4 +1,4 @@
-package com.oriontek.client.exception;
+package com.oriontek.client.shared.exception;
 
 import java.time.LocalDateTime;
 

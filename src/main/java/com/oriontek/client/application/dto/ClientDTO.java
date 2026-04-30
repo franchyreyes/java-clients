@@ -1,7 +1,7 @@
-package com.oriontek.client.dto;
+package com.oriontek.client.application.dto;
 
-import com.oriontek.client.model.Address;
-import com.oriontek.client.model.Client;
+import com.oriontek.client.domain.model.Address;
+import com.oriontek.client.domain.model.Client;
 
 import java.util.List;
 import java.util.stream.Collectors;

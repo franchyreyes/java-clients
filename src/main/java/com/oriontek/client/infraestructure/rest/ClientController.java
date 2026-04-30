@@ -1,4 +1,4 @@
-package com.oriontek.client.controller;
+package com.oriontek.client.infraestructure.rest;
 
 import com.oriontek.client.application.handler.command.CreateClientHandler;
 import com.oriontek.client.application.handler.command.DeleteClientHandle;
@@ -7,12 +7,10 @@ import com.oriontek.client.application.handler.query.GetAllClientHandler;
 import com.oriontek.client.application.handler.query.GetClientHandler;
 import com.oriontek.client.application.usecase.command.request.CreateClientRequest;
 import com.oriontek.client.application.usecase.command.request.UpdateClientRequest;
-import com.oriontek.client.dto.ClientDTO;
-import com.oriontek.client.response.SuccessResponse;
+import com.oriontek.client.application.dto.ClientDTO;
+import com.oriontek.client.shared.response.SuccessResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,7 +22,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/clients")
