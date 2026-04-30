@@ -1,6 +1,6 @@
 package com.oriontek.client.application.usecase.command.request;
 
-import com.oriontek.client.model.Address;
+import com.oriontek.client.domain.model.Address;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package com.oriontek.client.repository;
+package com.oriontek.client.infraestructure.repository;
 
-import com.oriontek.client.model.Client;
+import com.oriontek.client.domain.model.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

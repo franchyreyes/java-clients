@@ -1,16 +1,14 @@
-package com.oriontek.client.controller;
+package com.oriontek.client.infraestructure.rest;
 
 import com.oriontek.client.application.handler.command.CreateClientAddressHandle;
 import com.oriontek.client.application.handler.command.DeleteClientAddressHandler;
 import com.oriontek.client.application.handler.query.GetClientAddressHandler;
 import com.oriontek.client.application.usecase.command.request.CreateClientAddressRequest;
 import com.oriontek.client.application.usecase.command.request.DeleteClientAddressRequest;
-import com.oriontek.client.dto.ClientAddressDTO;
-import com.oriontek.client.response.SuccessResponse;
+import com.oriontek.client.application.dto.ClientAddressDTO;
+import com.oriontek.client.shared.response.SuccessResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;

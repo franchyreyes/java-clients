@@ -2,9 +2,9 @@ package com.oriontek.client.application.handler.query;
 
 import com.oriontek.client.application.handler.Handler;
 import com.oriontek.client.application.usecase.query.GetClientAddressUseCase;
-import com.oriontek.client.dto.ClientAddressDTO;
-import com.oriontek.client.exception.ClientAddressNotFoundException;
-import com.oriontek.client.model.Address;
+import com.oriontek.client.application.dto.ClientAddressDTO;
+import com.oriontek.client.shared.exception.ClientAddressNotFoundException;
+import com.oriontek.client.domain.model.Address;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

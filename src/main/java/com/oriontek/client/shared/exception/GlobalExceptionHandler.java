@@ -1,4 +1,4 @@
-package com.oriontek.client.exception;
+package com.oriontek.client.shared.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

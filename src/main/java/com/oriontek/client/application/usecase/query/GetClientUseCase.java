@@ -1,7 +1,7 @@
 package com.oriontek.client.application.usecase.query;
 
-import com.oriontek.client.model.Client;
-import com.oriontek.client.repository.ClientRepository;
+import com.oriontek.client.domain.model.Client;
+import com.oriontek.client.infraestructure.repository.ClientRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;

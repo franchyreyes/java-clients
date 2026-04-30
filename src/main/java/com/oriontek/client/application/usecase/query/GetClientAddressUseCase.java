@@ -1,11 +1,10 @@
 package com.oriontek.client.application.usecase.query;
 
-import com.oriontek.client.model.Address;
-import com.oriontek.client.repository.ClientAddressRepository;
+import com.oriontek.client.domain.model.Address;
+import com.oriontek.client.infraestructure.repository.ClientAddressRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class GetClientAddressUseCase {

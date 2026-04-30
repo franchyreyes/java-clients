@@ -1,4 +1,4 @@
-package com.oriontek.client.response;
+package com.oriontek.client.shared.response;
 
 import java.time.LocalDateTime;
 

@@ -1,4 +1,4 @@
-package com.oriontek.client.dto;
+package com.oriontek.client.application.dto;
 
 public class ClientAddressDTO {
 

@@ -1,4 +1,4 @@
-package com.oriontek.client.exception;
+package com.oriontek.client.shared.exception;
 
 
 public class ClientNotFoundException extends RuntimeException {
