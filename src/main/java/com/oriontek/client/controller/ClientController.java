@@ -9,6 +9,13 @@ import com.oriontek.client.application.usecase.command.request.CreateClientReque
 import com.oriontek.client.application.usecase.command.request.UpdateClientRequest;
 import com.oriontek.client.dto.ClientDTO;
 import com.oriontek.client.response.SuccessResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -21,6 +28,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/clients")
+@Tag(name = "Clients", description = "Gestión de clientes")
 public class ClientController {
 
     private final CreateClientHandler createClientHandler;
@@ -35,7 +43,7 @@ public class ClientController {
                             DeleteClientHandle deleteClientHandle,
                             GetAllClientHandler getAllClientHandler
 
-                            ) {
+    ) {
         this.createClientHandler = createClientHandler;
         this.getClientHandler = getClientHandler;
         this.updateClientHandler = updateClientHandler;
@@ -44,8 +52,18 @@ public class ClientController {
     }
 
     // Command side: create client
+    @Operation(
+            summary = "Crear un nuevo cliente",
+            description = "Permite registrar un nuevo cliente en el sistema."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Cliente creado exitosamente"),
+            @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos")
+    })
     @PostMapping
-    public ResponseEntity<SuccessResponse<ClientDTO>> createClient(@RequestBody CreateClientRequest command) {
+    public ResponseEntity<SuccessResponse<ClientDTO>> createClient(
+            @RequestBody CreateClientRequest command) {
+
         ClientDTO client = createClientHandler.handle(command);
         SuccessResponse<ClientDTO> response = new SuccessResponse<>(
                 LocalDateTime.now(),
@@ -57,6 +75,7 @@ public class ClientController {
     }
 
     // Query side: get All client
+    @Operation(summary = "Obtener todos los clientes", description = "Devuelve una lista paginada de clientes")
     @GetMapping
     public ResponseEntity<SuccessResponse<Page<ClientDTO>>> getAllClients(@RequestParam(defaultValue = "0") int page,
                                                                           @RequestParam(defaultValue = "10") int size) {
@@ -74,8 +93,19 @@ public class ClientController {
     }
 
     // Query side: get client by id
+    @Operation(
+            summary = "Obtener cliente por ID",
+            description = "Devuelve la información de un cliente específico identificado por su ID."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Cliente encontrado exitosamente"),
+            @ApiResponse(responseCode = "404", description = "Cliente no encontrado")
+    })
     @GetMapping("/{id}")
-    public ResponseEntity<SuccessResponse<ClientDTO>> getClientById(@PathVariable Long id) {
+    public ResponseEntity<SuccessResponse<ClientDTO>> getClientById(
+            @Parameter(description = "ID único del cliente", required = true)
+            @PathVariable Long id) {
+
         ClientDTO client = getClientHandler.handle(id);
         SuccessResponse<ClientDTO> response = new SuccessResponse<>(
                 LocalDateTime.now(),
@@ -87,8 +117,20 @@ public class ClientController {
     }
 
     // Command side: update client by id
+    @Operation(
+            summary = "Actualizar cliente por ID",
+            description = "Permite actualizar la información de un cliente existente identificado por su ID."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Cliente actualizado exitosamente"),
+            @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos"),
+            @ApiResponse(responseCode = "404", description = "Cliente no encontrado")
+    })
     @PutMapping("/{id}")
-    public ResponseEntity<SuccessResponse<ClientDTO>> updateClientById(@PathVariable Long id,@RequestBody UpdateClientRequest command) {
+    public ResponseEntity<SuccessResponse<ClientDTO>> updateClientById(
+            @Parameter(description = "ID único del cliente", required = true) @PathVariable Long id,
+            @Parameter(description = "Datos para actualizar el cliente", required = true) @RequestBody UpdateClientRequest command) {
+
         ClientDTO client = updateClientHandler.handle(command);
         SuccessResponse<ClientDTO> response = new SuccessResponse<>(
                 LocalDateTime.now(),
@@ -99,9 +141,20 @@ public class ClientController {
         return ResponseEntity.ok(response);
     }
 
-    // Command side: create client
+    // Command side: Delete client
+    @Operation(
+            summary = "Eliminar cliente por ID",
+            description = "Permite eliminar un cliente existente identificado por su ID. "
+                    + "Al eliminar un cliente, también se eliminan todas sus direcciones asociadas."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Cliente eliminado exitosamente"),
+            @ApiResponse(responseCode = "404", description = "Cliente no encontrado")
+    })
     @DeleteMapping("/{id}")
-    public ResponseEntity<SuccessResponse<Void>> deleteClientById(@PathVariable Long id) {
+    public ResponseEntity<SuccessResponse<Void>> deleteClientById(
+            @Parameter(description = "ID único del cliente", required = true) @PathVariable Long id) {
+
         deleteClientHandle.handle(id);
         SuccessResponse<Void> response = new SuccessResponse<>(
                 LocalDateTime.now(),

@@ -5,6 +5,7 @@ public class UpdateClientRequest {
     private Long clientId;
     private String name;
 
+    public UpdateClientRequest(){}
 
     public UpdateClientRequest(Long clientId, String name) {
         this.clientId = clientId;

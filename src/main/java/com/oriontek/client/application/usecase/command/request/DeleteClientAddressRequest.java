@@ -5,7 +5,7 @@ public class DeleteClientAddressRequest {
     private Long clientId;
     private Long addresId;
 
-
+    public DeleteClientAddressRequest(){}
     public DeleteClientAddressRequest(Long clientId, Long addresId) {
         this.clientId = clientId;
         this.addresId = addresId;

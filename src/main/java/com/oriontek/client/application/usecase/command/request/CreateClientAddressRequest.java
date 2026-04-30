@@ -5,6 +5,7 @@ public class CreateClientAddressRequest {
     private Long clientId;
     private String description;
 
+    public CreateClientAddressRequest(){}
 
     public CreateClientAddressRequest(Long clientId, String description) {
         this.clientId = clientId;
